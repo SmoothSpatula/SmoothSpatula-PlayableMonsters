@@ -1,7 +1,6 @@
 -- Lemurian v1.0.0
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
-survivor_setup = require("./survivor_setup")
 
 -- ========== Sprite ========== 
 
@@ -45,7 +44,7 @@ local Lemurian_id = -1
 local Lemurian = nil
 
 Lemurian, Lemurian_id = setup_survivor(
-    "SmoothSpatula", "Lemurian", "Lemurian", "Some kind of massive insect.", "...",
+    "SmoothSpatula", "Lemurian", "Lemurian", "7' tall.", "...",
     loadout_sprite, portrait_sprite, portraitsmall_sprite, loadout_sprite,
     walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite, jumpfall_sprite, climb_sprite,
     {["r"]=160, ["g"] = 115, ["b"] = 116}, {[1] = 0.0, [2] = - 20.0, [3] = 3.0}
