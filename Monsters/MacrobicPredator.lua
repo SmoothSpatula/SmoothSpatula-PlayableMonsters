@@ -54,14 +54,14 @@ MacrobicPredator, MacrobicPredator_id = setup_survivor(
 
 setup_skill(MacrobicPredator.skill_family_z[0], "Primary attack", "Big tongue", 
     skills_sprite, 1, attack_sprite0, 
-    0.0, 1.0, true, 703)
+    0.0, 1.0, true, 188)
     setup_skill(MacrobicPredator.skill_family_x[0], "Primary attack", "Big tongue", 
     skills_sprite, 1, attack_sprite1, 
-    0.0, 1.0, true, 2386)
+    0.0, 1.0, true, 189)
 setup_empty_skill(MacrobicPredator.skill_family_c[0])
 setup_skill(MacrobicPredator.skill_family_v[0], "Primary attack", "Big tongue", 
     skills_sprite, 1, attack_sprite2, 
-    0.0, 1.0, true, 3367)
+    0.0, 1.0, true, 189)
 
 -- == Callback == -- 
 
