@@ -49,7 +49,7 @@ local id, identifier = ... or {}
 MacrobicPredator, MacrobicPredator_id = setup_survivor(
     "SmoothSpatula", "MacrobicPredator", "Macrobic Predator", "Some kind of massive insect.", "...",
     loadout_sprite, portrait_sprite, portraitsmall_sprite, loadout_sprite,
-    walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite,
+    walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite, jumpfall_sprite,
     {["r"]=160, ["g"] = 115, ["b"] = 116}, {[1] = 0.0, [2] = - 20.0, [3] = 3.0}
 )
 
@@ -61,7 +61,7 @@ setup_empty_skill(MacrobicPredator.skill_family_x[0])
 setup_empty_skill(MacrobicPredator.skill_family_c[0])
 setup_empty_skill(MacrobicPredator.skill_family_v[0])
 
--- == Additional Hooks and Callbacks == -- 
+-- == Callback == -- 
 
 -- fix damage multi
 gm.pre_script_hook(gm.constants.fire_explosion, function(self, other, result, args) -- scale 
