@@ -1,7 +1,6 @@
--- Lemurian v1.0.0
+-- MacrobicPredator v1.0.0
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
-survivor_setup = require("./survivor_setup")
 
 -- ========== Sprite ========== 
 
