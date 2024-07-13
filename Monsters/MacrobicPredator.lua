@@ -1,4 +1,4 @@
--- MacrobicPredator v1.0.1
+-- Lemurian v1.0.0
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
 survivor_setup = require("./survivor_setup")
@@ -46,7 +46,7 @@ local MacrobicPredator = nil
 MacrobicPredator, MacrobicPredator_id = setup_survivor(
     "SmoothSpatula", "MacrobicPredator", "Macrobic Predator", "Some kind of massive insect.", "...",
     loadout_sprite, portrait_sprite, portraitsmall_sprite, loadout_sprite,
-    walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite, jumpfall_sprite,
+    walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite, jumpfall_sprite, nil,
     {["r"]=160, ["g"] = 115, ["b"] = 116}, {[1] = 0.0, [2] = - 20.0, [3] = 3.0}
 )
 
