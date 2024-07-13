@@ -6,7 +6,7 @@ THIS IS AN ALPHA, IT WILL BE BROKEN AND THINGS WILL CHANGE
 
 * Macrobic Predator - base skill + menu sprites
 
-* Lemurian - base skill
+* Lemurian - base skill + menu sprites
 
 * Golem - base skill + menu sprites
 
