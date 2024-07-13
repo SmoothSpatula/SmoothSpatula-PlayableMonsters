@@ -5,16 +5,13 @@ survivor_setup = require("./survivor_setup")
 
 -- ========== Sprite ========== 
 
--- local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "sImpOverlordPortrait.png")
--- local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "sImpOverlordPortraitSmall.png")
+local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "MacrobicPredatorPortrait.png")
+local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "MacrobicPredatorPortraitSmall.png")
+local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "MacrobicPredatorSkill.png")
 
--- local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "skillsicons.png")
-
--- local palette_path = path.combine(_ENV["!plugins_mod_folder_path"], "sImpOverlordPAL.png")
-
-local portrait_sprite = gm.sprite_duplicate(gm.constants.sMacGIdle)
--- local portraitsmall_sprite = gm.sprite_add(portraitsmall_path, 1, false, false, 0, 0)
--- local skills_sprite = gm.sprite_add(skills_path, 4, false, false, 0, 0)
+local portrait_sprite = gm.sprite_add(portrait_path, 1, false, false, 0, 0)
+local portraitsmall_sprite = gm.sprite_add(portraitsmall_path, 1, false, false, 0, 0)
+local skills_sprite = gm.sprite_add(skills_path, 1, false, false, 0, 0)
 local loadout_sprite = gm.sprite_duplicate(gm.constants.sMacGSpawn)
 local idle_sprite = gm.sprite_duplicate(gm.constants.sMacGIdle)
 local walk_sprite = gm.sprite_duplicate(gm.constants.sMacGShoot2_1)
@@ -30,7 +27,7 @@ local jumpfall_sprite = gm.sprite_duplicate(gm.constants.sMacGFall)
 
 local palette_sprite = gm.sprite_add(hit_path, 1, false, false, 0, 0)
 
-gm.sprite_set_offset(loadout_sprite, 80, -60)
+gm.sprite_set_offset(loadout_sprite, 80, -90)
 
 gm.sprite_set_speed(idle_sprite, 1, 1)
 gm.sprite_set_speed(attack_sprite, 1, 1)
@@ -51,15 +48,24 @@ local id, identifier = ... or {}
 
 MacrobicPredator, MacrobicPredator_id = setup_survivor(
     "SmoothSpatula", "MacrobicPredator", "Macrobic Predator", "Some kind of massive insect.", "...",
-    loadout_sprite, loadout_sprite, loadout_sprite, loadout_sprite,
+    loadout_sprite, portrait_sprite, portraitsmall_sprite, loadout_sprite,
     walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite,
-    {["r"]=168, ["g"] = 156, ["b"] = 163}, {[1] = -12.0, [2] = - 55.0, [3] = 3.0}
+    {["r"]=160, ["g"] = 115, ["b"] = 116}, {[1] = 0.0, [2] = - 20.0, [3] = 3.0}
 )
 
-setup_skill(MacrobicPredator.skill_family_z[0], "Primary attack", "Big tongue thingy", 
-    0, 0, attack_sprite, 
-    0.0, 5.0, true, 188)
+setup_skill(MacrobicPredator.skill_family_z[0], "Primary attack", "Big tongue", 
+    skills_sprite, 1, attack_sprite, 
+    0.0, 1.0, true, 188)
 
 setup_empty_skill(MacrobicPredator.skill_family_x[0])
 setup_empty_skill(MacrobicPredator.skill_family_c[0])
 setup_empty_skill(MacrobicPredator.skill_family_v[0])
+
+-- == Additional Hooks and Callbacks == -- 
+
+-- fix damage multi
+gm.pre_script_hook(gm.constants.fire_explosion, function(self, other, result, args) -- scale 
+    if self.class == 16.0 then -- MacrobicPredator_id 
+        args[4].value = 6.0 -- damage multi
+    end
+end)
