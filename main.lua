@@ -54,7 +54,7 @@ end
 
 function setup_survivor(namespace, identifier, name, description, end_quote,
                         loadout_sprite, portrait_sprite, portraitsmall_sprite, palette_sprite, 
-                        walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite,
+                        walk_sprite, idle_sprite, death_sprite, jump_sprite, jump_peak_sprite, jumpfall_sprite,
                         colour, cape_array)
     
     survivor_id = gm.survivor_create(namespace, identifier)
@@ -97,7 +97,8 @@ function setup_survivor(namespace, identifier, name, description, end_quote,
         ["walk_sprite"] = walk_sprite, 
         ["death_sprite"] = death_sprite,
         ["jump_sprite"] = jump_sprite,
-        ["jumpfall_sprite"] = jumpfall_sprite
+        ["jumpfall_sprite"] = jumpfall_sprite,
+        ["jumppeak_sprite"] = jump_peak_sprite
     }
 
     return survivor, survivor_id
@@ -115,7 +116,7 @@ local function setup_sprites(self)
     self.sprite_idle        = survivors[self.class].idle_sprite
     self.sprite_walk        = survivors[self.class].walk_sprite
     self.sprite_jump        = survivors[self.class].jump_sprite
-    self.sprite_jump_peak   = survivors[self.class].jump_sprite
+    self.sprite_jump_peak   = survivors[self.class].jumppeak_sprite or survivors[self.class].jump_sprite
     self.sprite_fall        = survivors[self.class].jumpfall_sprite or survivors[self.class].jump_sprite
     self.sprite_climb       = survivors[self.class].idle_sprite
     self.sprite_death       = survivors[self.class].death_sprite
@@ -137,8 +138,8 @@ end
 gm.post_script_hook(gm.constants.stage_load_room, function(self, other, result, args)
     if not is_init then 
         is_init = true
-        include_survivor("MacrobicPredator")
-        
+        include_survivor("Monsters/MacrobicPredator")
+        --include_survivor("Monsters/Lemurian")
     end
 end)
 
