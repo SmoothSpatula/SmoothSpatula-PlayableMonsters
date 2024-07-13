@@ -1,6 +1,7 @@
 -- PlayableMonsters v1.0.0
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
+survivor_setup = require("./survivor_setup")
 
 local survivors = ... or {}
 
@@ -141,6 +142,7 @@ gm.post_script_hook(gm.constants.stage_load_room, function(self, other, result, 
         is_init = true
         include_survivor("Monsters/MacrobicPredator")
         include_survivor("Monsters/Lemurian")
+        include_survivor("Monsters/Golem")
     end
 end)
 
