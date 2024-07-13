@@ -1,4 +1,4 @@
--- PlayableMonsters v1.0.0
+-- PlayableMonsters v0.0.0 Alpha
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
 
