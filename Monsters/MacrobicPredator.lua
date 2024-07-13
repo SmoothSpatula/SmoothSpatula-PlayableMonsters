@@ -1,4 +1,4 @@
--- MacrobicPredator v1.0.0
+-- MacrobicPredator v1.0.1
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
 survivor_setup = require("./survivor_setup")
@@ -25,7 +25,7 @@ local jump_sprite = gm.sprite_duplicate(gm.constants.sMacGJump)
 local jumpfall_sprite = gm.sprite_duplicate(gm.constants.sMacGFall)
 -- local hit_sprite = gm.sprite_add(hit_path, 1, false, false, 29, 45)
 
-local palette_sprite = gm.sprite_add(hit_path, 1, false, false, 0, 0)
+--local palette_sprite = gm.sprite_add(hit_path, 1, false, false, 0, 0)
 
 gm.sprite_set_offset(loadout_sprite, 80, -90)
 
@@ -42,9 +42,6 @@ gm.sprite_set_speed(death_sprite, 1, 1)
 
 local MacrobicPredator_id = -1
 local MacrobicPredator = nil
-local is_init = false
-
-local id, identifier = ... or {}
 
 MacrobicPredator, MacrobicPredator_id = setup_survivor(
     "SmoothSpatula", "MacrobicPredator", "Macrobic Predator", "Some kind of massive insect.", "...",
@@ -65,7 +62,7 @@ setup_empty_skill(MacrobicPredator.skill_family_v[0])
 
 -- fix damage multi
 gm.pre_script_hook(gm.constants.fire_explosion, function(self, other, result, args) -- scale 
-    if self.class == 16.0 then -- MacrobicPredator_id 
+    if self.class == MacrobicPredator_id then
         args[4].value = 6.0 -- damage multi
     end
 end)
