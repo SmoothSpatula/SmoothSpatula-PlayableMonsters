@@ -8,4 +8,6 @@ THIS IS AN ALPHA, IT WILL BE BROKEN AND THINGS WILL CHANGE
 
 * Lemurian - base skill
 
+* Golem - base skill + menu sprites
+
 [Link to discord thread](https://discord.com/channels/1171745917272084550/1260987114376527962)
