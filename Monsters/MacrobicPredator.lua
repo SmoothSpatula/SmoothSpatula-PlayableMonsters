@@ -7,7 +7,7 @@ survivor_setup = require("./survivor_setup")
 
 local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "MacrobicPredatorPortrait.png")
 local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "MacrobicPredatorPortraitSmall.png")
-local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "MacrobicPredatorSkill.png")
+local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "MacrobicPredatorSkill1.png")
 
 local portrait_sprite = gm.sprite_add(portrait_path, 1, false, false, 0, 0)
 local portraitsmall_sprite = gm.sprite_add(portraitsmall_path, 1, false, false, 0, 0)
@@ -32,7 +32,9 @@ local jumpfall_sprite = gm.sprite_duplicate(gm.constants.sMacGFall)
 gm.sprite_set_offset(loadout_sprite, 80, -90)
 
 gm.sprite_set_speed(idle_sprite, 1, 1)
-gm.sprite_set_speed(attack_sprite, 1, 1)
+gm.sprite_set_speed(attack_sprite0, 1, 1)
+gm.sprite_set_speed(attack_sprite1, 1, 1)
+gm.sprite_set_speed(attack_sprite2, 1, 1)
 gm.sprite_set_speed(walk_sprite, 1, 1)
 --gm.sprite_set_speed(special_sprite, 1, 1)
 --gm.sprite_set_speed(utility_sprite, 1, 1)
@@ -68,6 +70,6 @@ setup_skill(MacrobicPredator.skill_family_v[0], "Primary attack", "Big tongue",
 -- fix damage multi
 gm.pre_script_hook(gm.constants.fire_explosion, function(self, other, result, args) -- scale 
     if self.class == MacrobicPredator_id then
-        args[4].value = 6.0 -- damage multi
+        args[4].value = 10.0 -- damage multi
     end
 end)
