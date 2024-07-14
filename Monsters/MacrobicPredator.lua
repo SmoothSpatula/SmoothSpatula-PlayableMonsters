@@ -15,8 +15,8 @@ local loadout_sprite = gm.sprite_duplicate(gm.constants.sMacGSpawn)
 local idle_sprite = gm.sprite_duplicate(gm.constants.sMacGIdle)
 local walk_sprite = gm.sprite_duplicate(gm.constants.sMacGShoot2_1)
 local attack_sprite0 = gm.sprite_duplicate(gm.constants.sMacGShoot1_1)
-local attack_sprite1 = gm.sprite_duplicate(gm.constants.sMacGShoot2_1)
-local attack_sprite2 = gm.sprite_duplicate(gm.constants.sMacGShoot2_3)
+local attack_sprite1 = gm.sprite_duplicate(gm.constants.sMacGShoot1_2)
+local attack_sprite2 = gm.sprite_duplicate(gm.constants.sMacGShoot1_3)
 -- local shoot1_air_sprite = gm.sprite_add(shoot1_air_path, 7, false, false, 29, 45)
 -- local special_sprite = gm.sprite_duplicate(822)
 -- local utility_sprite = gm.sprite_duplicate(823)
@@ -34,7 +34,7 @@ gm.sprite_set_speed(idle_sprite, 1, 1)
 gm.sprite_set_speed(attack_sprite0, 1, 1)
 gm.sprite_set_speed(attack_sprite1, 1, 1)
 gm.sprite_set_speed(attack_sprite2, 1, 1)
-gm.sprite_set_speed(walk_sprite, 1, 1)
+gm.sprite_set_speed(walk_sprite, 0.75, 1)
 --gm.sprite_set_speed(special_sprite, 1, 1)
 --gm.sprite_set_speed(utility_sprite, 1, 1)
 --gm.sprite_set_speed(secondary_sprite, 1, 1)
@@ -59,7 +59,7 @@ setup_skill(MacrobicPredator.skill_family_z[0], "Primary attack", "Big tongue",
 
     setup_skill(MacrobicPredator.skill_family_x[0], "Primary attack", "Big tongue", 
     skills_sprite, 1, attack_sprite1, 
-    0.0, 1.0, true, 189)
+    0.0, 1.0, true, 188)
 setup_empty_skill(MacrobicPredator.skill_family_c[0])
 setup_skill(MacrobicPredator.skill_family_v[0], "Primary attack", "Big tongue", 
     skills_sprite, 1, attack_sprite2, 
