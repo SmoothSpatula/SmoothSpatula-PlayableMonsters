@@ -1,4 +1,4 @@
--- Golem v1.0.0
+-- Golem v1.0.1
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
 
@@ -55,13 +55,26 @@ gm.sprite_set_speed(death_sprite, 1, 1)
 local Golem_id = -1
 local Golem = nil
 
+
+-- function setup_survivor(namespace, identifier, name, description, end_quote,
+-- loadout_sprite, portrait_sprite, portraitsmall_sprite, palette_sprite, 
+-- walk_sprite, idle_sprite, death_sprite, jump_sprite, jump_peak_sprite, jumpfall_sprite, climb_sprite,
+-- colour, cape_array)
 Golem, Golem_id = setup_survivor(
     "SmoothSpatula", "Golem", "Golem", "Constructed from the soil.", "...",
     loadout_sprite, portrait_sprite, portraitsmall_sprite, loadout_sprite,
     walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite, jumpfall_sprite, nil,
     {["r"]=70, ["g"] = 69, ["b"] = 80}, {[1] = 0.0, [2] = - 20.0, [3] = 3.0}
 )
+-- function setup_stats(survivor_id, armor, attack_speed, movement_speed, critical_chance, damage, hp_regen, maxhp, maxbarrier, maxshield)
+setup_stats(Golem_id, nil, 1.0, nil, 1.0, nil, 0.04, 300,  nil, nil)
 
+-- function setup_level_stats(survivor_id, armor_level, attack_speed_level, critical_chance_level, damage_level, hp_regen_level, maxhp_level)
+setup_level_stats(Golem_id, nil, nil, nil, nil, nil, 50)
+
+-- function setup_skill(skill_ref, name, description, 
+-- sprite, sprite_subimage,animation, 
+-- cooldown, damage, is_primary, skill_id)
 setup_skill(Golem.skill_family_z[0], "Primary attack", "Big Slam", 
     skills_sprite, 1, attack_sprite, 
     0.0, 10.0, true, 160)
