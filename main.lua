@@ -141,7 +141,6 @@ gm.post_script_hook(gm.constants.stage_load_room, function(self, other, result, 
         is_init = true
         include_survivor("Monsters/MacrobicPredator")
         include_survivor("Monsters/Lemurian")
-        include_survivor("Monsters/SandCrab")
     end
 end)
 
