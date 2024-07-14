@@ -1,4 +1,4 @@
--- PlayableMonsters v1.0.0
+-- PlayableMonsters v1.0.1
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
 survivor_setup = require("./survivor_setup")
@@ -48,10 +48,12 @@ function setup_empty_skill(skill_ref)
     local skills = gm.variable_global_get("class_skill")
 
     skill_ref.on_can_activate = skills[1][25]
-    skill_ref.on_activate = skills[1][26]
+    skill_ref.on_activate = skills[1][26] 
 
     return skill_ref
 end
+
+-- stats to add maxhp, maxhp_base, maxhp_cap, hp_regen, hp_regen_base, hp_regen_level
 
 function setup_survivor(namespace, identifier, name, description, end_quote,
                         loadout_sprite, portrait_sprite, portraitsmall_sprite, palette_sprite, 
@@ -106,6 +108,28 @@ function setup_survivor(namespace, identifier, name, description, end_quote,
     return survivor, survivor_id
 end
 
+function setup_stats(survivor_id, armor, attack_speed, movement_speed, critical_chance, damage, hp_regen, maxhp, maxbarrier, maxshield)
+    survivors[survivor_id]["armor"] = armor
+    survivors[survivor_id]["attack_speed"] = attack_speed
+    survivors[survivor_id]["movement_speed"] = movement_speed
+    survivors[survivor_id]["critical_chance"] = critical_chance
+    survivors[survivor_id]["damage"] = damage
+    survivors[survivor_id]["hp_regen"] =  hp_regen
+    survivors[survivor_id]["maxhp"] =  maxhp
+    survivors[survivor_id]["maxbarrier"] = maxbarrier
+    survivors[survivor_id]["maxshield"] = maxshield
+end
+
+-- function setup_level_stats(survivor_id, armor_level, attack_speed_level, critical_chance_level, damage_level, hp_regen_level, maxhp_cap, maxhp_level)
+--     ["armor_level"] = armor_level, 
+--     ["attack_speed_level"] = attack_speed_level, 
+--     ["critical_chance_level"] = critical_chance_level, 
+--     ["damage_level"] = damage_level,
+--     ["hp_regen_level"] =  hp_regen_level,
+--     ["maxhp_cap"] =  maxhp_cap,
+--     ["maxhp_level"] = maxhp_level
+-- end
+
 local function include_survivor(identifier)
     require("./" .. identifier, survivors[survivor_id], identifier)
 end
@@ -123,6 +147,19 @@ local function setup_sprites(self)
     self.sprite_climb       = survivors[self.class].climb_sprite or survivors[self.class].idle_sprite
     self.sprite_death       = survivors[self.class].death_sprite
     self.sprite_decoy       = survivors[self.class].death_sprite
+
+
+    if survivors[self.class].movement_speed ~= nil then self.pHmax = survivors[self.class].movement_speed end
+    if survivors[self.class].movement_speed ~= nil then self.pHmax_base = survivors[self.class].movement_speed end
+    if survivors[self.class].movement_speed ~= nil then self.pHmax_raw = survivors[self.class].movement_speed end
+
+    local stats = {"armor", "attack_speed", "critical_chance", "damage", "hp_regen", "maxhp", "maxbarrier", "maxshield"}
+    for _,stat in ipairs(stats) do
+        if survivors[self.class][stat] ~= nil then 
+            self[stat.."_base"] = survivors[self.class][stat]
+            self[stat] = survivors[self.class][stat]
+        end
+    end
 end
 
 -- ========== Callbacks ==========
