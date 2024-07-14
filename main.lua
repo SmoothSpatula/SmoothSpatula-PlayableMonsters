@@ -1,4 +1,4 @@
--- PlayableMonsters v1.0.1
+-- PlayableMonsters v1.0.2
 -- SmoothSpatula
 log.info("Successfully loaded ".._ENV["!guid"]..".")
 survivor_setup = require("./survivor_setup")
@@ -120,15 +120,14 @@ function setup_stats(survivor_id, armor, attack_speed, movement_speed, critical_
     survivors[survivor_id]["maxshield"] = maxshield
 end
 
--- function setup_level_stats(survivor_id, armor_level, attack_speed_level, critical_chance_level, damage_level, hp_regen_level, maxhp_cap, maxhp_level)
---     ["armor_level"] = armor_level, 
---     ["attack_speed_level"] = attack_speed_level, 
---     ["critical_chance_level"] = critical_chance_level, 
---     ["damage_level"] = damage_level,
---     ["hp_regen_level"] =  hp_regen_level,
---     ["maxhp_cap"] =  maxhp_cap,
---     ["maxhp_level"] = maxhp_level
--- end
+function setup_level_stats(survivor_id, armor_level, attack_speed_level, critical_chance_level, damage_level, hp_regen_level, maxhp_level)
+    survivors[survivor_id]["armor_level"] = armor_level
+    survivors[survivor_id]["attack_speed_level"] = attack_speed_level
+    survivors[survivor_id]["critical_chance_level"] = critical_chance_level
+    survivors[survivor_id]["damage_level"] = damage_level
+    survivors[survivor_id]["hp_regen_level"] =  hp_regen_level
+    survivors[survivor_id]["maxhp_level"] = maxhp_level
+end
 
 local function include_survivor(identifier)
     require("./" .. identifier, survivors[survivor_id], identifier)
@@ -154,9 +153,16 @@ local function setup_sprites(self)
     if survivors[self.class].movement_speed ~= nil then self.pHmax_raw = survivors[self.class].movement_speed end
 
     local stats = {"armor", "attack_speed", "critical_chance", "damage", "hp_regen", "maxhp", "maxbarrier", "maxshield"}
+    local level_stats = {"survivor_id", "armor_level", "attack_speed_level", "critical_chance_level", "damage_level", "hp_regen_level", "maxhp_level"}
     for _,stat in ipairs(stats) do
         if survivors[self.class][stat] ~= nil then 
             self[stat.."_base"] = survivors[self.class][stat]
+            self[stat] = survivors[self.class][stat]
+        end
+    end
+
+    for _,stat in ipairs(level_stats) do
+        if survivors[self.class][stat] ~= nil then 
             self[stat] = survivors[self.class][stat]
         end
     end
