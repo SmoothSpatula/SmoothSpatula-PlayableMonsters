@@ -188,6 +188,7 @@ gm.post_script_hook(gm.constants.stage_load_room, function(self, other, result, 
         include_survivor("Monsters/Golem")
         include_survivor("Monsters/Parent")
         include_survivor("Monsters/Wisp")
+        include_survivor("Monsters/GreaterWisp")
     end
 end)
 
