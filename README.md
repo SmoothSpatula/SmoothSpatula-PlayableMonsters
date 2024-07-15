@@ -12,10 +12,10 @@ THIS IS AN ALPHA, IT WILL BE BROKEN AND THINGS WILL CHANGE
 
 * Parent - base skill + menu sprites
 
+* Wisp, Archaic Wisp, Greater Wisp
+
 ## Working on
 
-* SandCrab
-
-* Imp
+* More guys
 
 [Link to discord thread](https://discord.com/channels/1171745917272084550/1260987114376527962)
