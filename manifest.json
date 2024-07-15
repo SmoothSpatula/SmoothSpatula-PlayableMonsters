@@ -1,6 +1,6 @@
 {
 	"name": "PlayableMonsters",
-	"version_number": "0.0.1",
+	"version_number": "0.0.3",
 	"website_url": "https://github.com/SmoothSpatula/SmoothSpatula-PlayableMonsters",
 	"description": "Project to add a bunch of existing monsters as playable characters. WORK IN PROGRESS",
 	"dependencies": [
