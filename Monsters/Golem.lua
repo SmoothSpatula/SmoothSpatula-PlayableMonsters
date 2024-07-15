@@ -43,7 +43,7 @@ gm.sprite_set_offset(attack_sprite, 61, 70)
 -- Sprite Speeds
 gm.sprite_set_speed(idle_sprite, 1, 1)
 gm.sprite_set_speed(attack_sprite, 1, 1)
-gm.sprite_set_speed(walk_sprite, 1, 1)
+gm.sprite_set_speed(walk_sprite, 0.75, 1)
 --gm.sprite_set_speed(special_sprite, 1, 1)
 --gm.sprite_set_speed(utility_sprite, 1, 1)
 --gm.sprite_set_speed(secondary_sprite, 1, 1)
