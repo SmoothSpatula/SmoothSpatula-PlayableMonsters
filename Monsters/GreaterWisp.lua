@@ -4,29 +4,30 @@ log.info("Successfully loaded ".._ENV["!guid"]..".")
 
 -- ========== Sprite ========== 
 
-local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "WispPortrait.png")
-local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "WispPortraitSmall.png")
-local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "WispSkill1.png")
+local portrait_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "GreaterWispPortrait.png")
+local portraitsmall_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "GreaterWispPortraitSmall.png")
+local skills_path = path.combine(_ENV["!plugins_mod_folder_path"], "Sprites", "GreaterWispSkill1.png")
 
 local portrait_sprite = gm.sprite_add(portrait_path, 1, false, false, 0, 0)
 local portraitsmall_sprite = gm.sprite_add(portraitsmall_path, 1, false, false, 0, 0)
 local skills_sprite = gm.sprite_add(skills_path, 1, false, false, 0, 0)
-local loadout_sprite = gm.sprite_duplicate(gm.constants.sWispSpawn)
-local idle_sprite = gm.sprite_duplicate(gm.constants.sWispIdle)
-local walk_sprite = gm.sprite_duplicate(gm.constants.sWispIdle)
-local attack_sprite0 = gm.sprite_duplicate(gm.constants.sWispShoot1)
+local loadout_sprite = gm.sprite_duplicate(gm.constants.sWispGSpawn)
+local idle_sprite = gm.sprite_duplicate(gm.constants.sWispGIdle)
+local walk_sprite = gm.sprite_duplicate(gm.constants.sWispGIdle)
+local attack_sprite0 = gm.sprite_duplicate(gm.constants.sWispGShoot1)
 -- local shoot1_air_sprite = gm.sprite_add(shoot1_air_path, 7, false, false, 29, 45)
 -- local special_sprite = gm.sprite_duplicate(822)
 -- local utility_sprite = gm.sprite_duplicate(823)
 -- local secondary_sprite = gm.sprite_duplicate(826)
-local death_sprite = gm.sprite_duplicate(gm.constants.sWispDeath)
-local jump_sprite = gm.sprite_duplicate(gm.constants.sWispIdle)
-local jumpfall_sprite = gm.sprite_duplicate(gm.constants.sWispIdle)
+local death_sprite = gm.sprite_duplicate(gm.constants.sWispGDeath)
+local jump_sprite = gm.sprite_duplicate(gm.constants.sWispGIdle)
+local jumpfall_sprite = gm.sprite_duplicate(gm.constants.sWispGIdle)
 -- local hit_sprite = gm.sprite_add(hit_path, 1, false, false, 29, 45)
 
 --local palette_sprite = gm.sprite_add(hit_path, 1, false, false, 0, 0)
 
-gm.sprite_set_offset(loadout_sprite, 22, -75)
+gm.sprite_set_offset(loadout_sprite, 15, -85)
+gm.sprite_set_offset(death_sprite, 15, 55)
 
 gm.sprite_set_speed(idle_sprite, 1, 1)
 gm.sprite_set_speed(attack_sprite0, 1, 1)
@@ -39,31 +40,31 @@ gm.sprite_set_speed(death_sprite, 1, 1)
 
 -- ========== Survivor Setup ==========
 
-local Wisp_id = -1
-local Wisp = nil
+local GreaterWisp_id = -1
+local GreaterWisp = nil
 
-Wisp, Wisp_id = setup_survivor(
-    "SmoothSpatula", "Wisp", "Wisp", "Living fire mask?", "...",
+GreaterWisp, GreaterWisp_id = setup_survivor(
+    "SmoothSpatula", "GreaterWisp", "GreaterWisp", "Big one of Living fire masks?", "...",
     loadout_sprite, portrait_sprite, portraitsmall_sprite, loadout_sprite,
     walk_sprite, idle_sprite, death_sprite, jump_sprite, jumpfall_sprite, jumpfall_sprite, nil,
     {["r"]=160, ["g"] = 115, ["b"] = 116}, {[1] = 0.0, [2] = - 20.0, [3] = 3.0}
 )
 
-setup_skill(Wisp.skill_family_z[0], "Primary attack", "Flame power", 
+setup_skill(GreaterWisp.skill_family_z[0], "Primary attack", "Flame power", 
     skills_sprite, 1, attack_sprite0, 
-    0.0, 1.0, true, 153)
+    0.0, 1.0, true, 154)
 
-setup_empty_skill(Wisp.skill_family_x[0])
-setup_empty_skill(Wisp.skill_family_c[0])
-setup_empty_skill(Wisp.skill_family_v[0])
+setup_empty_skill(GreaterWisp.skill_family_x[0])
+setup_empty_skill(GreaterWisp.skill_family_c[0])
+setup_empty_skill(GreaterWisp.skill_family_v[0])
 
-setup_stats(Wisp_id, 0.1, nil, nil, 0.05, nil, nil, 200, nil, nil)
+setup_stats(GreaterWisp_id, 0.1, nil, nil, 0.05, nil, nil, 400, nil, nil)
 
 -- == Callback == -- 
 
 -- fix damage multi
 gm.pre_script_hook(gm.constants.fire_explosion, function(self, other, result, args) -- scale 
-    if self.class == Wisp_id then
-        args[4].value = 4.0 -- damage multi
+    if self.class == GreaterWisp_id then
+        args[4].value = 6.0 -- damage multi
     end
 end)
