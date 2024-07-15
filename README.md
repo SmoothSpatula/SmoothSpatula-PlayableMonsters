@@ -10,4 +10,12 @@ THIS IS AN ALPHA, IT WILL BE BROKEN AND THINGS WILL CHANGE
 
 * Golem - base skill + menu sprites
 
+* Parent - base skill + menu sprites
+
+## Working on
+
+* SandCrab
+
+* Imp
+
 [Link to discord thread](https://discord.com/channels/1171745917272084550/1260987114376527962)
