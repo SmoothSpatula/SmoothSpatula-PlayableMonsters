@@ -55,15 +55,44 @@ setup_skill(MacrobicPredator.skill_family_z[0], "Primary attack", "Big tongue",
 
 setup_empty_skill(MacrobicPredator.skill_family_x[0])
 setup_empty_skill(MacrobicPredator.skill_family_c[0])
-setup_empty_skill(MacrobicPredator.skill_family_v[0])
-
-setup_stats(MacrobicPredator_id, 0.1, nil, nil, 0.05, nil, nil, 400, nil, nil)
+setup_skill(MacrobicPredator.skill_family_v[0], "Primary attack", "Big tongue", 
+    skills_sprite, 1, attack_sprite0, 
+    0.0, 1.0, true, 189)
+--          survivor_id,         armor, attack_speed, movement_speed, critical_chance, damage, hp_regen, maxhp, maxbarrier, maxshield
+setup_stats(MacrobicPredator_id, 0.5  , nil         , nil           , nil            , 16    , 0.05    , 315  , nil       , nil)
 
 -- == Callback == -- 
-
+-- gm.post_script_hook(gm.constants.callback_execute, function(self, other, result, args)
+--     if self.class == nil then return end
+--     local callback_id = args[1].value
+--     if callback_id == Imp.skill_family_c[0].on_activate and self.class == Imp_id then
+--         if gm.actor_get_facing_direction(self) == 180 then
+--             self.x = self.x - 200
+--         else
+--             self.x = self.x + 200
+--         end
+--         self.jumping = true
+--         player = self
+--         --player.hp = 20
+--         --player.maxhp = 1000
+--     end
+-- end)
+-- gm.post_script_hook(gm.constants.callback_execute, function(self, other, result, args)
+--     if self.class == nil then return end
+--     if args[1].value == GreaterWisp.skill_family_z[0].on_activate 
+--     and self.class == GreaterWisp_id 
+--     and self.m_id <= 2.0 then
+--         local items = gm.variable_global_get("class_item")
+--         local item_id = nil
+--         repeat
+--             item_id = gm.irandom_range(1, 112)
+--         until items[item_id] ~= nil and items[item_id][9] ~= nil and items[item_id][7] <= 2
+--         gm.instance_create_depth(self.x, self.y - 50.0, 0, items[item_id][9])
+--     end
+-- end)
 -- fix damage multi
 gm.pre_script_hook(gm.constants.fire_explosion, function(self, other, result, args) -- scale 
     if self.class == MacrobicPredator_id then
-        args[4].value = 6.0 -- damage multi
+        args[4].value = 10.0 -- damage multi
     end
 end)
